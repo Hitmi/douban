@@ -1,11 +1,13 @@
 package cn.analysys.douban.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.rmi.runtime.Log;
 
 /**
  * Description:
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     /**
@@ -40,16 +43,20 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获空指针异常
-     * @param e
+     * @param 
      * @return
      */
     @ExceptionHandler(value = NullPointerException.class)
     @ResponseBody
     public ResponseEntity<ExceptionVO> handleNotFoundException() {
-        //
+
+        // 获取自定义的空指针异常的枚举类型的信息
         int errCode = BusinessExceptionEnum.Null_Pointer.getExceptionCode();
         String errMsg = BusinessExceptionEnum.Null_Pointer.getExceptionMsg();
+
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+
+        log.error("接收到空指针异常");
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -63,6 +70,8 @@ public class GlobalExceptionHandler {
         String errMsg = BusinessExceptionEnum.Array_Index_Out_Of_Bounds.getExceptionMsg();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
+        log.error("接收到数组越界异常");
+
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
@@ -74,6 +83,8 @@ public class GlobalExceptionHandler {
         int errCode = BusinessExceptionEnum.Arithmetic.getExceptionCode();
         String errMsg = BusinessExceptionEnum.Arithmetic.getExceptionMsg();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+
+        log.error("接收到算术异常");
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -88,15 +99,17 @@ public class GlobalExceptionHandler {
 
         BusinessException businessException = (BusinessException) e;
 
+        //判断异常属于自定义异常的哪一种异常
         if ( businessException.getExceptionCode()== 20001){
             errCode = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionCode();
             errMsg = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionMsg();
+            log.error("接收到用户不存在异常");
         }
 
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
+
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 
 }
