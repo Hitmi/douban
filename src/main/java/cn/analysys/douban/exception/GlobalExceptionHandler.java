@@ -28,11 +28,12 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ResponseEntity<ExceptionVO> handlerException() {
+    public ResponseEntity<ExceptionVO> handlerException(Exception e) {
 
         String errMsg = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionMsg();
         int errCode = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionCode();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+        log.error(String.valueOf(e));
         log.error(errMsg);
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);

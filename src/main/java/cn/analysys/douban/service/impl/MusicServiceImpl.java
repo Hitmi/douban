@@ -11,6 +11,7 @@ import org.jxls.common.Context;
 import org.jxls.transform.poi.PoiTransformer;
 import org.jxls.util.JxlsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -25,6 +26,7 @@ public class MusicServiceImpl implements MusicService {
     @Autowired
     private ReportDao reportDao;
 
+    @Cacheable(value = "musicTop50",key = "")
     @Override
     public List<Music> findTop50() {
         List<Music> musics = musicMapper.selectTop50();
@@ -46,6 +48,7 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    @Cacheable(value="musicDetail", key = "#id")
     public MusicDetail selectDetail(Integer id){
 
         List<MusicReview> reviews = musicMapper.selectTop10(id);
@@ -64,6 +67,7 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    @Cacheable(value="musicEssay", key = "#essayId")
     public MusicEssay selectById(Integer essayId){
         MusicEssay musicEssay = musicMapper.selectEssay(essayId);
         System.out.println(musicEssay);

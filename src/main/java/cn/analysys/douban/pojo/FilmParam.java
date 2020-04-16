@@ -1,8 +1,10 @@
 package cn.analysys.douban.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class FilmParam {
+public class FilmParam implements Serializable {
+    private static final long serialVersionUID = -3496819884874144617L;
     private Date date;
     private Integer area_id;
     private Integer limitnum;

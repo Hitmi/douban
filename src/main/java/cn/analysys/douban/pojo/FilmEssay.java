@@ -1,8 +1,10 @@
 package cn.analysys.douban.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class FilmEssay {
+public class FilmEssay implements Serializable {
+    private static final long serialVersionUID = 1946238987558879576L;
     private Integer id;
     private Integer movie_id;
     private String title;

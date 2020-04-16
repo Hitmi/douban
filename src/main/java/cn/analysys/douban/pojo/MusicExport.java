@@ -1,5 +1,6 @@
 package cn.analysys.douban.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Date;
  * @date 2019/11/23 20:36
  * @since JDK 1.8
  */
-public class MusicExport {
+public class MusicExport implements Serializable {
+    private static final long serialVersionUID = -4911440903160672260L;
     private String name;
     private String player;
     private String releaseDate;

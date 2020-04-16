@@ -1,9 +1,13 @@
 package cn.analysys.douban.pojo;
 
+import java.io.Serializable;
+
 /**
  * 用于存储一条乐评的信息
  */
-public class MusicEssay {
+public class MusicEssay implements Serializable {
+    private static final long serialVersionUID = 4114808874213806756L;
+
     private Integer id;
     private String songId;
     private String userIcon;

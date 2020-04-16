@@ -1,6 +1,14 @@
 package cn.analysys.douban.pojo;
 
-public class Music {
+import java.io.Serializable;
+
+/**
+ * 音乐信息类
+ */
+public class Music implements Serializable {
+
+    private static final long serialVersionUID = 662692455422902539L;
+
     private String id;
 
     private String name;

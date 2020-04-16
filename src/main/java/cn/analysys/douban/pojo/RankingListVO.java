@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * Description:
  * 排行榜需要的数据
@@ -16,8 +18,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RankingListVO {
+public class RankingListVO implements Serializable {
 
+    private static final long serialVersionUID = -7052846575193441333L;
     private String id;
 
     private String name;

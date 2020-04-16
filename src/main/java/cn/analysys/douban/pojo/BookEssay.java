@@ -5,11 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
 @ToString
 @EqualsAndHashCode
-public class BookEssay {
+public class BookEssay implements Serializable {
+    private static final long serialVersionUID = -8854918546946559701L;
     private Integer id;
     private String book_id;
     private String user_icon;

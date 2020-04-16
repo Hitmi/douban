@@ -36,7 +36,24 @@
 			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 
-        <dependency>
+		<!--在 spring boot 2.x 以后底层不再使用 Jedis，而是换成了 Lettuce。-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!--用作 redis 连接池，如不引入启动会报错-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+		<!--spring session 引入，用作共享 session。配置文件-->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+
+
+		<dependency>
             <groupId>org.jxls</groupId>
             <artifactId>jxls</artifactId>
             <version>2.6.0</version>
@@ -107,6 +124,8 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.8</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

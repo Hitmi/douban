@@ -5,12 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class FilmDetail {
+public class FilmDetail implements Serializable {
 
+    private static final long serialVersionUID = -3217408777390888337L;
     private String film_id;
     private String name;
     private String director;

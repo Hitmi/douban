@@ -2,11 +2,14 @@ package cn.analysys.douban.pojo;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Film {
+public class Film implements Serializable {
+    private static final long serialVersionUID = 4866321985878709386L;
     private String id;
     private String name;
     private String director;
