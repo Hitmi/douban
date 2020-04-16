@@ -48,7 +48,7 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    @Cacheable(value="musicDetail", key = "#id")
+    @Cacheable(value="musicDetail", key = "")
     public MusicDetail selectDetail(Integer id){
 
         List<MusicReview> reviews = musicMapper.selectTop10(id);
