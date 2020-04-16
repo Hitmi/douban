@@ -2,6 +2,7 @@ package cn.analysys.douban.exception;
 
 /**
  * Description:
+ * 异常枚举
  *
  * @author houyi
  * @version 1.0

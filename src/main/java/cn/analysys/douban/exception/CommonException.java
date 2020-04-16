@@ -2,7 +2,6 @@ package cn.analysys.douban.exception;
 
 /**
  * Description:
- * 作为一个公共的异常
  *
  * @author houyi
  * @version 1.0

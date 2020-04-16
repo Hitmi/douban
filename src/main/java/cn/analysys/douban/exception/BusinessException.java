@@ -14,13 +14,13 @@ public class BusinessException extends Exception implements CommonException {
 
     private CommonException commonException;
 
-    //直接接收EmBusinessException的传参用于构造业务异常
+    // 直接接收EmBusinessException的传参用于构造业务异常
     public BusinessException(CommonException commonException){
         super();
         this.commonException = commonException;
     }
 
-    //直接接收EmBusinessException的传参用于构造业务异常
+    // 接收EmBusinessException的传参和异常信息用于构造业务异常
     public BusinessException(CommonException commonException, String exMsg){
         super();
         this.commonException = commonException;

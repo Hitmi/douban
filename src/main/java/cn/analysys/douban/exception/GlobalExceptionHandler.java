@@ -1,13 +1,11 @@
 package cn.analysys.douban.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.rmi.runtime.Log;
 
 /**
  * Description:
@@ -35,6 +33,7 @@ public class GlobalExceptionHandler {
         String errMsg = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionMsg();
         int errCode = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionCode();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+        log.error(errMsg);
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -56,7 +55,7 @@ public class GlobalExceptionHandler {
 
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        log.error("接收到空指针异常");
+        log.error(errMsg);
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -70,7 +69,7 @@ public class GlobalExceptionHandler {
         String errMsg = BusinessExceptionEnum.Array_Index_Out_Of_Bounds.getExceptionMsg();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        log.error("接收到数组越界异常");
+        log.error(errMsg);
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -84,7 +83,7 @@ public class GlobalExceptionHandler {
         String errMsg = BusinessExceptionEnum.Arithmetic.getExceptionMsg();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        log.error("接收到算术异常");
+        log.error(errMsg);
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -103,11 +102,10 @@ public class GlobalExceptionHandler {
         if ( businessException.getExceptionCode()== 20001){
             errCode = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionCode();
             errMsg = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionMsg();
-            log.error("接收到用户不存在异常");
+            log.error(errMsg);
         }
 
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
-
 
         return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
     }

@@ -6,6 +6,7 @@ import cn.analysys.douban.pojo.MusicDetail;
 import cn.analysys.douban.pojo.MusicEssay;
 import cn.analysys.douban.pojo.RankingListVO;
 import cn.analysys.douban.service.impl.MusicServiceImpl;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+@Api("音乐接口")
 @RestController
 @RequestMapping("/music")
 public class MusicController {
